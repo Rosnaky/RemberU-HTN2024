@@ -1,4 +1,5 @@
 import 'package:app/widgets/bottom_navigation_bar.dart';
+import 'package:app/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,20 +21,31 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        bottomNavigationBar: BottomNavBar(
-          selectedIndex: 0,
-          onDestinationSelected: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-        ),
-        body: Spacer());
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
+          bottomNavigationBar: BottomNavBar(
+            selectedIndex: 0,
+            onDestinationSelected: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+          ),
+          body: Column(
+            children: [
+              TopBar(
+                constraints: constraints,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+              )
+            ],
+          ));
+    });
   }
 }
