@@ -7,12 +7,11 @@ class TextFieldInput extends StatelessWidget {
   final String hintText;
   final TextInputType textInputType;
   const TextFieldInput(
-      {Key? key,
+      {super.key,
       required this.textEditingController,
       this.isPassword = false,
       required this.hintText,
-      required this.textInputType})
-      : super(key: key);
+      required this.textInputType});
 
   @override
   Widget build(BuildContext context) {

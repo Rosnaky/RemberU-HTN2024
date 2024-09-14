@@ -51,8 +51,8 @@ class _HomePageState extends State<HomePage> {
               TopBar(
                 constraints: constraints,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
               ),
               _getPage(selectedIndex)
             ],

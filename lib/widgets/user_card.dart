@@ -1,6 +1,5 @@
 import 'package:app/firebase/auth.dart';
 import 'package:app/models/firebase_user.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class UserCard extends StatefulWidget {
@@ -24,28 +23,63 @@ class _UserCardState extends State<UserCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: LayoutBuilder(builder: (context, constraints) {
-      return Card(
-        child: FutureBuilder<FirebaseUser?>(
+    return Center(
+      child: Card(
+        child: SizedBox(
+          width: 400,
+          child: FutureBuilder<FirebaseUser?>(
             future: userFuture,
-            builder: (contex, snapshot) {
+            builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else if (snapshot.hasData) {
                 final user = snapshot.data;
-                return Column(
+
+                return Row(
                   children: [
-                    Text(user?.firstName ?? 'No First Name'),
-                    Text(user?.email ?? 'No Email'),
+                    SizedBox(
+                      width: 150,
+                      height: 150,
+                      child: Container(
+                        color: const Color.fromARGB(
+                            255, 0, 0, 0), // Placeholder for an image or avatar
+                      ),
+                    ),
+                    const Spacer(),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(user?.firstName ?? 'No First Name'),
+                        const SizedBox(height: 16),
+                        if (user!.friends.isNotEmpty)
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: user.friends.map((friend) {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 4.0),
+                                child: Text(
+                                  '${friend.summary}',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                      ],
+                    ),
+                    const Spacer(),
                   ],
                 );
               } else {
-                return Text('No user data available');
+                return const Text('No user data available');
               }
-            }),
-      );
-    }));
+            },
+          ),
+        ),
+      ),
+    );
   }
 }
