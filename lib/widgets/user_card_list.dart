@@ -27,7 +27,7 @@ class _UserCardListState extends State<UserCardList> {
     return Builder(builder: (context) {
       return Column(
           children: userProvider.user?.friends
-                  .map((e) => UserCard(uid: e.uid))
+                  .map((e) => UserCard(name: e.name, summary: e.summary))
                   .toList() ??
               []);
     });

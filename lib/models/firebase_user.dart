@@ -37,10 +37,11 @@ class FirebaseUser {
       // This part parses friends from Firestore
       friends: (snap.get("friends") as List<dynamic>).map((friendData) {
         return Friend(
-          uid: friendData['uid'],
+          name: friendData['name'],
           photoUrl: friendData['photoUrl'],
           summary: friendData['summary'],
           lastSeen: DateTime.parse(friendData['lastSeen']),
+          location: friendData['location'],
         );
       }).toList(),
     );
