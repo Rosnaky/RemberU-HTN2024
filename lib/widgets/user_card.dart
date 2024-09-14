@@ -1,24 +1,26 @@
 import 'package:app/firebase/auth.dart';
 import 'package:app/models/firebase_user.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class UserCard extends StatefulWidget {
-  const UserCard({super.key, required this.uid});
+  const UserCard({super.key, required this.name, required this.summary});
 
-  final String uid;
+  final String name;
+  final String summary;
 
   @override
   State<UserCard> createState() => _UserCardState();
 }
 
 class _UserCardState extends State<UserCard> {
-  String get uid => widget.uid;
+  String get name => widget.name;
+  String get summary => widget.summary;
   late Future<FirebaseUser?> userFuture;
 
   @override
   void initState() {
     super.initState();
-    userFuture = Auth().getUserDetailsById(uid);
   }
 
   @override
@@ -27,56 +29,28 @@ class _UserCardState extends State<UserCard> {
       child: Card(
         child: SizedBox(
           width: 400,
-          child: FutureBuilder<FirebaseUser?>(
-            future: userFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              } else if (snapshot.hasData) {
-                final user = snapshot.data;
-
-                return Row(
-                  children: [
-                    SizedBox(
-                      width: 150,
-                      height: 150,
-                      child: Container(
-                        color: const Color.fromARGB(
-                            255, 0, 0, 0), // Placeholder for an image or avatar
-                      ),
-                    ),
-                    const Spacer(),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(user?.firstName ?? 'No First Name'),
-                        const SizedBox(height: 16),
-                        if (user!.friends.isNotEmpty)
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: user.friends.map((friend) {
-                              return Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 4.0),
-                                child: Text(
-                                  '${friend.summary}',
-                                  style: const TextStyle(fontSize: 16),
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                      ],
-                    ),
-                    const Spacer(),
-                  ],
-                );
-              } else {
-                return const Text('No user data available');
-              }
-            },
+          child: Row(
+            children: [
+              SizedBox(
+                width: 150,
+                height: 150,
+                child: Container(
+                  color: const Color.fromARGB(
+                      255, 0, 0, 0), // Placeholder for an image or avatar
+                ),
+              ),
+              const Spacer(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(name),
+                  const SizedBox(height: 16),
+                  Text(summary),
+                ],
+              ),
+              const Spacer(),
+            ],
           ),
         ),
       ),
