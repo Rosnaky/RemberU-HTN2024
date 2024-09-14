@@ -28,20 +28,32 @@ class _UserCardState extends State<UserCard> {
     return Center(
       child: Card(
         child: SizedBox(
-          width: 400,
-          child: Row(children: [
-            SizedBox(
-              width: 150,
-              height: 150,
-              child: Container(
-                color: const Color.fromARGB(
-                    255, 0, 0, 0), // Placeholder for an image or avatar
+          child: Container (
+            color: const Color.fromARGB(48, 143, 221, 239),
+                width: 400,
+                child: Row(children: [
+                  SizedBox(
+                    width: 150,
+                    height: 150,
+                    child: Container(
+                      color: const Color.fromARGB(
+                          255, 0, 0, 0), // Placeholder for an image or avatar
               ),
-            ),
+        ),
+          // width: 400,
+          // child: Row(children: [
+          //   SizedBox(
+          //     width: 150,
+          //     height: 150,
+          //     child: Container(
+          //       color: const Color.fromARGB(
+          //           255, 0, 0, 0), // Placeholder for an image or avatar
+          //     ),
+            // ),
             const Spacer(),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(name),
                 const SizedBox(height: 16),
@@ -49,7 +61,7 @@ class _UserCardState extends State<UserCard> {
               ],
             ),
             const Spacer(),
-          ]),
+          ])),
         ),
       ),
     );
