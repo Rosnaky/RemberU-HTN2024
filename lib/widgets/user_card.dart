@@ -53,7 +53,7 @@ class _UserCardState extends State<UserCard> {
             const Spacer(),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(name),
                 const SizedBox(height: 16),
