@@ -1,4 +1,5 @@
 import 'package:app/models/firebase_user.dart' as userModel;
+import 'package:app/models/friend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -41,7 +42,7 @@ class Auth {
     required String firstName,
     required String lastName,
     required String displayName,
-    required List<String> friends,
+    required List<Friend> friends,
   }) async {
     String res = "Some error occured";
 

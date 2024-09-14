@@ -18,9 +18,9 @@ class _HomePageState extends State<HomePage> {
   Widget _getPage(int index) {
     switch (index) {
       case 0:
-        return HomeHomeSubpage();
+        return const HomeHomeSubpage();
       default:
-        return HomeHomeSubpage();
+        return const HomeHomeSubpage();
     }
   }
 

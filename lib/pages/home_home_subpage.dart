@@ -12,7 +12,7 @@ class _HomeHomeSubpageState extends State<HomeHomeSubpage> {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [UserCardList()],
+      children: [Text("Meet your friends"), UserCardList()],
     );
   }
 }

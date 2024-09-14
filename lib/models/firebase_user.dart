@@ -1,3 +1,4 @@
+import 'package:app/models/friend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseUser {
@@ -6,7 +7,7 @@ class FirebaseUser {
   final String displayName;
   final String firstName;
   final String lastName;
-  final List<String> friends;
+  final List<Friend> friends;
 
   const FirebaseUser({
     required this.uid,
@@ -33,7 +34,15 @@ class FirebaseUser {
       email: snap.get("email"),
       displayName: snap.get("displayName"),
       uid: snap.get("uid"),
-      friends: List<String>.from(snap.get("friends")),
+      // This part parses friends from Firestore
+      friends: (snap.get("friends") as List<dynamic>).map((friendData) {
+        return Friend(
+          uid: friendData['uid'],
+          photoUrl: friendData['photoUrl'],
+          summary: friendData['summary'],
+          lastSeen: DateTime.parse(friendData['lastSeen']),
+        );
+      }).toList(),
     );
   }
 }
