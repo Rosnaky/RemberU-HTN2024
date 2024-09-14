@@ -29,32 +29,27 @@ class _UserCardState extends State<UserCard> {
       child: Card(
         child: SizedBox(
           width: 400,
- firebase
-          child: Row(
-            children: [
-              SizedBox(
-                width: 150,
-                height: 150,
-                child: Container(
-                  color: const Color.fromARGB(
-                      255, 0, 0, 0), // Placeholder for an image or avatar
-                ),
+          child: Row(children: [
+            SizedBox(
+              width: 150,
+              height: 150,
+              child: Container(
+                color: const Color.fromARGB(
+                    255, 0, 0, 0), // Placeholder for an image or avatar
               ),
-              const Spacer(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(name),
-                  const SizedBox(height: 16),
-                  Text(summary),
-                ],
-              ),
-              const Spacer(),
-            ],
-
- main
-          ),
+            ),
+            const Spacer(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(name),
+                const SizedBox(height: 16),
+                Text(summary),
+              ],
+            ),
+            const Spacer(),
+          ]),
         ),
       ),
     );
