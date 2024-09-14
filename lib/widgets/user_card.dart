@@ -40,8 +40,8 @@ class _UserCardState extends State<UserCard> {
                 return Row(
                   children: [
                     SizedBox(
-                      width: 150,
-                      height: 150,
+                      width: 120,
+                      height: 120,
                       child: Container(
                         color: const Color.fromARGB(
                             255, 0, 0, 0), // Placeholder for an image or avatar
@@ -50,10 +50,10 @@ class _UserCardState extends State<UserCard> {
                     const Spacer(),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(user?.firstName ?? 'No First Name'),
-                        const SizedBox(height: 16),
+                        Text(user?.firstName ?? 'No First Name', style: const TextStyle(fontSize: 18)),
+                        const SizedBox(height: 20),
                         if (user!.friends.isNotEmpty)
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +62,7 @@ class _UserCardState extends State<UserCard> {
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 4.0),
                                 child: Text(
-                                  '${friend.summary}',
+                                  friend.summary,
                                   style: const TextStyle(fontSize: 16),
                                 ),
                               );
