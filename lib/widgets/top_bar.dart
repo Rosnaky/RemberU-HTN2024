@@ -1,4 +1,5 @@
 import 'package:app/firebase/auth.dart';
+import 'package:app/pages/splash_page.dart';
 import 'package:app/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -59,7 +60,7 @@ class _TopBarState extends State<TopBar> {
               ),
               const Spacer(flex: 1),
               IconButton(
-                  onPressed: () => {Auth().logout()},
+                  onPressed: () => logout(),
                   icon: const Icon(Icons.exit_to_app))
               // *** Settings
               //
@@ -74,5 +75,11 @@ class _TopBarState extends State<TopBar> {
         ),
       ),
     );
+  }
+
+  Future<void> logout() async {
+    Auth().logout();
+    Navigator.pushNamedAndRemoveUntil(
+        context, SplashPage.routeName, (route) => false);
   }
 }

@@ -36,22 +36,7 @@ class _RegisterPageState extends State<RegisterPage>
   late AnimationController progressController;
 
   bool _isLoading = false;
-  DateTime? _dateOfBirth;
   int _step = 0;
-  var months = {
-    1: "January",
-    2: "February",
-    3: "March",
-    4: "April",
-    5: "May",
-    6: "June",
-    7: "July",
-    8: "August",
-    9: "September",
-    10: "October",
-    11: "November",
-    12: "December"
-  };
 
   @override
   void initState() {
@@ -385,15 +370,13 @@ class _RegisterPageState extends State<RegisterPage>
       _isLoading = true;
     });
 
-    await Auth()
-        .register(
-      email: emailTextEditingController.text,
-      password: passwordTextEditingController.text,
-      firstName: firstNameTextEditingController.text,
-      lastName: lastNameTextEditingController.text,
-      displayName: displayNameEditingController.text,
-    )
-        .then((value) async {
+    await Auth().register(
+        email: emailTextEditingController.text,
+        password: passwordTextEditingController.text,
+        firstName: firstNameTextEditingController.text,
+        lastName: lastNameTextEditingController.text,
+        displayName: displayNameEditingController.text,
+        friends: []).then((value) async {
       setState(() {
         _isLoading = false;
       });

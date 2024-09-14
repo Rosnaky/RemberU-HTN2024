@@ -8,8 +8,5 @@ class Destination {
 
 const List<Destination> destinations = [
   Destination(Icons.home, 'Home'),
-  Destination(Icons.cloud, 'Weather'),
-  Destination(Icons.map, 'Navigation'),
-  Destination(Icons.people_alt_outlined, 'Club'),
-  Destination(Icons.book, 'Logbook'),
+  Destination(Icons.cloud, 'Profile'),
 ];

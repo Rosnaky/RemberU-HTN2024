@@ -41,6 +41,7 @@ class Auth {
     required String firstName,
     required String lastName,
     required String displayName,
+    required List<String> friends,
   }) async {
     String res = "Some error occured";
 
@@ -54,12 +55,12 @@ class Auth {
             .createUserWithEmailAndPassword(email: email, password: password);
 
         userModel.FirebaseUser user = userModel.FirebaseUser(
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          displayName: displayName,
-          uid: userCredential.user!.uid,
-        );
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            displayName: displayName,
+            uid: userCredential.user!.uid,
+            friends: friends);
 
         await _firestore
             .collection("users")
@@ -93,6 +94,17 @@ class Auth {
     try {
       DocumentSnapshot snap =
           await _firestore.collection("users").doc(user.uid).get();
+      return userModel.FirebaseUser.fromSnap(snap);
+    } on Exception {
+      Auth().logout();
+    }
+    return null;
+  }
+
+  Future<userModel.FirebaseUser?> getUserDetailsById(String uid) async {
+    try {
+      DocumentSnapshot snap =
+          await _firestore.collection("users").doc(uid).get();
       return userModel.FirebaseUser.fromSnap(snap);
     } on Exception {
       Auth().logout();

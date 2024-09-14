@@ -6,6 +6,7 @@ class FirebaseUser {
   final String displayName;
   final String firstName;
   final String lastName;
+  final List<String> friends;
 
   const FirebaseUser({
     required this.uid,
@@ -13,6 +14,7 @@ class FirebaseUser {
     required this.displayName,
     required this.firstName,
     required this.lastName,
+    required this.friends,
   });
 
   Map<String, dynamic> toJson() => {
@@ -21,6 +23,7 @@ class FirebaseUser {
         "email": email,
         "displayName": displayName,
         "uid": uid,
+        "friends": [],
       };
 
   static FirebaseUser fromSnap(DocumentSnapshot snap) {
@@ -30,6 +33,7 @@ class FirebaseUser {
       email: snap.get("email"),
       displayName: snap.get("displayName"),
       uid: snap.get("uid"),
+      friends: List<String>.from(snap.get("friends")),
     );
   }
 }
