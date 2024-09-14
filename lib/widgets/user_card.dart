@@ -29,6 +29,7 @@ class _UserCardState extends State<UserCard> {
       child: Card(
         child: SizedBox(
           width: 400,
+ firebase
           child: Row(
             children: [
               SizedBox(
@@ -51,6 +52,8 @@ class _UserCardState extends State<UserCard> {
               ),
               const Spacer(),
             ],
+
+ main
           ),
         ),
       ),
