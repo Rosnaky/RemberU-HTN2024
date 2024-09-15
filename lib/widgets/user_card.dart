@@ -87,7 +87,7 @@ class _UserCardState extends State<UserCard> {
                   ),
                   const SizedBox(height:10),
                   Text(
-                    lastSeen,
+                    "Last seen on " + DateFormat('MMMM dd y').format(DateTime.parse(lastSeen)),
                     softWrap: true,
                   )
                 ],
