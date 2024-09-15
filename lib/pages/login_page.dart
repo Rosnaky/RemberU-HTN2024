@@ -92,30 +92,22 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Login to",
-              style: Theme.of(context)
-                  .textTheme
-                  .displayMedium
-                  ?.copyWith(fontWeight: FontWeight.w300),
-            ),
-            Text(
-              "*App Name*",
-              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: theme.colorScheme.primary),
-            ),
-            SizedBox(height: constraints.maxHeight * 0.1),
+            Image.asset(
+                      'assets/images/logo-slogan.png',
+                      width: constraints.maxWidth * 0.95,
+                      height: constraints.maxHeight * 0.22,
+                      fit: BoxFit.contain,
+                    ),
+            SizedBox(height: constraints.maxHeight * 0.05),
             loginCredentials(constraints),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(10.0),
               child: Container(
-                width: constraints.maxWidth * 0.9,
+                width: constraints.maxWidth * 0.8,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: theme.colorScheme.primary,
-                    )),
+                    color: const Color.fromARGB(255, 205, 230, 238),
+                    ),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 0),
                   child: Column(
@@ -124,16 +116,16 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text("Don't have an account?",
                             style: theme.textTheme.displaySmall
-                                ?.copyWith(fontSize: 14)),
+                                ?.copyWith(fontSize: 16)),
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(12.0, 12, 12, 0),
                         child: TextButton(
                           style: TextButton.styleFrom(
                             foregroundColor:
-                                Theme.of(context).colorScheme.primary,
+                                const Color.fromARGB(255, 255, 255, 255),
                             backgroundColor:
-                                Theme.of(context).colorScheme.onPrimary,
+                                const Color.fromARGB(255, 109, 198, 225),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -148,7 +140,11 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text("Register"),
+                                  Text("Register",
+                                    style: const TextStyle(
+                                    fontSize: 16,
+                                    ),
+                                  ),
                                 ],
                               )),
                         ),
@@ -167,10 +163,10 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   Container loginCredentials(BoxConstraints constraints) {
     return Container(
-      width: constraints.maxWidth * 0.9,
+      width: constraints.maxWidth * 0.8,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: theme.colorScheme.primary),
+        color: const Color.fromARGB(255, 205, 230, 238),
       ),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -180,14 +176,14 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: SizedBox(
-                width: constraints.maxWidth * 0.8,
+                width: constraints.maxWidth * 0.7,
                 child: Column(
                   children: [
                     TextFieldInput(
                         textEditingController: emailTextEditingController,
                         hintText: "Email",
                         textInputType: TextInputType.emailAddress),
-                    SizedBox(height: constraints.maxHeight * 0.05),
+                    SizedBox(height: constraints.maxHeight * 0.02),
                     TextFieldInput(
                         textEditingController: passwordTextEditingController,
                         hintText: "Password",
@@ -199,10 +195,10 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             value: progressController.value)
                         : TextButton(
                             style: TextButton.styleFrom(
-                              foregroundColor:
-                                  Theme.of(context).colorScheme.primary,
+                              foregroundColor: 
+                                  const Color.fromARGB(255, 255, 255, 255),
                               backgroundColor:
-                                  Theme.of(context).colorScheme.onPrimary,
+                                  const Color.fromARGB(255, 109, 198, 225),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -214,7 +210,11 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("Login"),
+                                    Text("Login",
+                                      style: const TextStyle(
+                                      fontSize: 16,
+                                      ),
+                                    ),
                                   ],
                                 )),
                           ),
