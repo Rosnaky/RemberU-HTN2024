@@ -46,16 +46,18 @@ class _HomePageState extends State<HomePage> {
               });
             },
           ),
-          body: Column(
-            children: [
-              TopBar(
-                constraints: constraints,
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-              ),
-              _getPage(selectedIndex)
-            ],
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                TopBar(
+                  constraints: constraints,
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                ),
+                _getPage(selectedIndex)
+              ],
+            ),
           ));
     });
   }

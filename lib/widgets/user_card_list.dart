@@ -24,12 +24,23 @@ class _UserCardListState extends State<UserCardList> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    return Builder(builder: (context) {
-      return Column(
-          children: userProvider.user?.friends
-                  .map((e) => UserCard(name: e.name, summary: e.summary))
-                  .toList() ??
-              []);
-    });
+    return Container(
+      child: Column(
+        children: userProvider.user?.friends
+                .map((e) => UserCard(name: e.name, summary: e.summary))
+                .toList() ??
+            []));
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   final userProvider = Provider.of<UserProvider>(context);
+  //   return Builder(builder: (context) {
+  //     return Column(
+  //         children: userProvider.user?.friends
+  //                 .map((e) => UserCard(name: e.name, summary: e.summary))
+  //                 .toList() ??
+  //             []);
+  //   });
+  // }
 }
