@@ -78,7 +78,8 @@ class _RegisterPageState extends State<RegisterPage>
           return Scaffold(
             appBar: AppBar(),
             body: LayoutBuilder(builder: (context, constraints) {
-              return Column(
+              return SingleChildScrollView(
+                child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
@@ -151,7 +152,7 @@ class _RegisterPageState extends State<RegisterPage>
                         )
                       : Container(),
                 ],
-              );
+              ));
             }),
           );
         });

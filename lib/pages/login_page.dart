@@ -89,115 +89,43 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(),
       body: LayoutBuilder(builder: (context, constraints) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
-                      'assets/images/logo-slogan.png',
-                      width: constraints.maxWidth * 0.95,
-                      height: constraints.maxHeight * 0.22,
-                      fit: BoxFit.contain,
-                    ),
-            SizedBox(height: constraints.maxHeight * 0.02),
-            loginCredentials(constraints),
-            SizedBox(height: constraints.maxHeight * 0.02),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                width: constraints.maxWidth * 0.8,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color.fromARGB(255, 205, 230, 238),
-                    ),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("Don't have an account?",
-                            style: theme.textTheme.displaySmall
-                                ?.copyWith(fontSize: 16)),
+        return SingleChildScrollView (
+            child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                        'assets/images/logo-slogan.png',
+                        width: constraints.maxWidth * 0.95,
+                        height: constraints.maxHeight * 0.22,
+                        fit: BoxFit.contain,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(12.0, 12, 12, 0),
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            foregroundColor:
-                                const Color.fromARGB(255, 255, 255, 255),
-                            backgroundColor:
-                                const Color.fromARGB(255, 109, 198, 225),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, RegisterPage.routeName);
-                          },
-                          child: const SizedBox(
-                              width: 80,
-                              height: 30,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Register",
-                                    style: const TextStyle(
-                                    fontSize: 16,
-                                    ),
-                                  ),
-                                ],
-                              )),
+              SizedBox(height: constraints.maxHeight * 0.02),
+              loginCredentials(constraints),
+              SizedBox(height: constraints.maxHeight * 0.02),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  width: constraints.maxWidth * 0.8,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color.fromARGB(255, 205, 230, 238),
+                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 0),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text("Don't have an account?",
+                              style: theme.textTheme.displaySmall
+                                  ?.copyWith(fontSize: 16)),
                         ),
-                      ),
-                      SizedBox(height: constraints.maxHeight * 0.03),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        );
-      }),
-    );
-  }
-
-  Container loginCredentials(BoxConstraints constraints) {
-    return Container(
-      width: constraints.maxWidth * 0.8,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: const Color.fromARGB(255, 205, 230, 238),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: SizedBox(
-                width: constraints.maxWidth * 0.7,
-                child: Column(
-                  children: [
-                    TextFieldInput(
-                        textEditingController: emailTextEditingController,
-                        hintText: "Email",
-                        textInputType: TextInputType.emailAddress),
-                    SizedBox(height: constraints.maxHeight * 0.02),
-                    TextFieldInput(
-                        textEditingController: passwordTextEditingController,
-                        hintText: "Password",
-                        isPassword: true,
-                        textInputType: TextInputType.visiblePassword),
-                    SizedBox(height: constraints.maxHeight * 0.03),
-                    _isLoading
-                        ? LinearProgressIndicator(
-                            value: progressController.value)
-                        : TextButton(
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12.0, 12, 12, 0),
+                          child: TextButton(
                             style: TextButton.styleFrom(
-                              foregroundColor: 
+                              foregroundColor:
                                   const Color.fromARGB(255, 255, 255, 255),
                               backgroundColor:
                                   const Color.fromARGB(255, 109, 198, 225),
@@ -205,8 +133,81 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () => loginUser(),
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, RegisterPage.routeName);
+                            },
                             child: const SizedBox(
+                                width: 80,
+                                height: 30,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("Register",
+                                      style: const TextStyle(
+                                      fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ),
+                        ),
+                        SizedBox(height: constraints.maxHeight * 0.03),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ));
+        }),
+      );
+    }
+
+    Container loginCredentials(BoxConstraints constraints) {
+      return Container(
+        width: constraints.maxWidth * 0.8,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: const Color.fromARGB(255, 205, 230, 238),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: SizedBox(
+                  width: constraints.maxWidth * 0.7,
+                  child: Column(
+                    children: [
+                      TextFieldInput(
+                          textEditingController: emailTextEditingController,
+                          hintText: "Email",
+                          textInputType: TextInputType.emailAddress),
+                      SizedBox(height: constraints.maxHeight * 0.02),
+                      TextFieldInput(
+                          textEditingController: passwordTextEditingController,
+                          hintText: "Password",
+                          isPassword: true,
+                          textInputType: TextInputType.visiblePassword),
+                      SizedBox(height: constraints.maxHeight * 0.03),
+                      _isLoading
+                          ? LinearProgressIndicator(
+                              value: progressController.value)
+                          : TextButton(
+                              style: TextButton.styleFrom(
+                                foregroundColor: 
+                                    const Color.fromARGB(255, 255, 255, 255),
+                                backgroundColor:
+                                    const Color.fromARGB(255, 109, 198, 225),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              onPressed: () => loginUser(),
+                              child: const SizedBox(
                                 width: 80,
                                 height: 30,
                                 child: Column(
