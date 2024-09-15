@@ -31,39 +31,19 @@ class _SplashPageState extends State<SplashPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/RemberU.png',
+                      'assets/images/logo-slogan.png',
                       width: width * 0.7,
+                      height: height * 0.2,
+                      fit: BoxFit.contain,
+                    ),
+                    SizedBox(height: 0),
+                    Image.asset(
+                      'assets/images/bear.png',
+                      width: width * 0.4,
                       height: height * 0.5,
                       fit: BoxFit.contain,
                     ),
-                    SizedBox(height: height * 0.001),
-                    Container(
-                      padding: EdgeInsets.all(12.0),
-                      margin: EdgeInsets.symmetric(horizontal: 110.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 8.0,
-                            offset: Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Remember everyone, every time.",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 233, 166, 157),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: height * 0.15),
+                    SizedBox(height: height * 0),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(
@@ -74,16 +54,20 @@ class _SplashPageState extends State<SplashPage> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white, // Color of the button text
+                        foregroundColor: Colors.white,
                         backgroundColor: Color.fromARGB(255, 109, 198, 225),
-                        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Button padding
+                        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0), // Button border radius
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                       child: snapshot.hasData
                           ? const Text("Enter")
-                          : const Text("Login"),
+                          : const Text("Begin",
+                              style: const TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
                     ),
                   ],
                 ),
