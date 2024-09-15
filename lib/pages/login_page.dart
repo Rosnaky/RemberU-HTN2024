@@ -90,7 +90,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       appBar: AppBar(),
       body: LayoutBuilder(builder: (context, constraints) {
         return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
                       'assets/images/logo-slogan.png',
@@ -98,8 +99,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       height: constraints.maxHeight * 0.22,
                       fit: BoxFit.contain,
                     ),
-            SizedBox(height: constraints.maxHeight * 0.05),
+            SizedBox(height: constraints.maxHeight * 0.02),
             loginCredentials(constraints),
+            SizedBox(height: constraints.maxHeight * 0.02),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Container(
