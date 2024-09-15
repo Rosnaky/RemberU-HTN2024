@@ -38,7 +38,7 @@ class FirebaseUser {
       friends: (snap.get("friends") as List<dynamic>).map((friendData) {
         return Friend(
           name: friendData['name'],
-          photoUrl: friendData['photoUrl'],
+          photoUrl: List<String>.from(friendData['photoUrl']),
           summary: friendData['summary'],
           lastSeen: DateTime.parse(friendData['lastSeen']),
           location: friendData['location'],

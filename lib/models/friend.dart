@@ -1,6 +1,6 @@
 class Friend {
   final String name;
-  final String photoUrl;
+  final List<String> photoUrl;
   final String summary;
   final DateTime lastSeen;
   final String location;
