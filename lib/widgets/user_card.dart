@@ -28,9 +28,9 @@ class _UserCardState extends State<UserCard> {
     return Center(
       child: Card(
         child: Container (
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: const Color(0xffD3EAF2),
+            color:  Color(0xffD3EAF2),
           ),
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -57,17 +57,25 @@ class _UserCardState extends State<UserCard> {
           //           255, 0, 0, 0), // Placeholder for an image or avatar
           //     ),
             // ),
-            const Spacer(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(name),
-                const SizedBox(height: 16),
-                Text(summary),
-              ],
-            ),
-            const Spacer(),
+            // const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name, 
+                    softWrap: true,
+                  ), // will have to change to what's said during the convo
+                  const SizedBox(height:10),
+                  Text(
+                    summary, 
+                    softWrap: true,
+                  ),
+                ],
+            )),
+            // const Spacer(),
           ])),
         ),
       ),
