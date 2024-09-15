@@ -81,31 +81,24 @@ class _RegisterPageState extends State<RegisterPage>
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Register with",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayMedium
-                        ?.copyWith(fontWeight: FontWeight.w300),
-                  ),
-                  Text(
-                    "*App Name*",
-                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: theme.colorScheme.primary),
-                  ),
-                  SizedBox(height: constraints.maxHeight * 0.1),
+                  Image.asset(
+                      'assets/images/logo-slogan.png',
+                      width: constraints.maxWidth * 0.95,
+                      height: constraints.maxHeight * 0.22,
+                      fit: BoxFit.contain,
+                    ),
+                  SizedBox(height: constraints.maxHeight * 0.02),
                   registerWidget(constraints),
+                  
                   _step == 0
                       ? Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Container(
-                            width: constraints.maxWidth * 0.9,
+                            width: constraints.maxWidth * 0.8,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: theme.colorScheme.primary,
-                                )),
+                                color: const Color.fromARGB(255, 205, 230, 238),
+                                ),
                             child: Padding(
                               padding:
                                   const EdgeInsets.fromLTRB(10.0, 10, 10, 0),
@@ -115,19 +108,15 @@ class _RegisterPageState extends State<RegisterPage>
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: Text("Already have an account?",
                                         style: theme.textTheme.displaySmall
-                                            ?.copyWith(fontSize: 14)),
+                                            ?.copyWith(fontSize: 16)),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.fromLTRB(
                                         12.0, 12, 12, 0),
                                     child: TextButton(
                                       style: TextButton.styleFrom(
-                                        foregroundColor: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                        backgroundColor: Theme.of(context)
-                                            .colorScheme
-                                            .onPrimary,
+                                        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                                        backgroundColor: const Color.fromARGB(255, 109, 198, 225),
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
@@ -144,7 +133,11 @@ class _RegisterPageState extends State<RegisterPage>
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
-                                              Text("Login"),
+                                              Text("Login",
+                                                style: const TextStyle(
+                                                fontSize: 16,
+                                                ),
+                                              ),
                                             ],
                                           )),
                                     ),
@@ -177,11 +170,11 @@ class _RegisterPageState extends State<RegisterPage>
 
   Container registerEmailAndPassword(BoxConstraints constraints) {
     return Container(
-      width: constraints.maxWidth * 0.9,
+      width: constraints.maxWidth * 0.8,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: theme.colorScheme.primary),
-      ),
+        color: const Color.fromARGB(255, 205, 230, 238),
+        ),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: Column(
@@ -190,20 +183,20 @@ class _RegisterPageState extends State<RegisterPage>
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: SizedBox(
-                width: constraints.maxWidth * 0.8,
+                width: constraints.maxWidth * 0.7,
                 child: Column(
                   children: [
                     TextFieldInput(
                         textEditingController: emailTextEditingController,
                         hintText: "Email",
                         textInputType: TextInputType.emailAddress),
-                    SizedBox(height: constraints.maxHeight * 0.03),
+                    SizedBox(height: constraints.maxHeight * 0.02),
                     TextFieldInput(
                         textEditingController: passwordTextEditingController,
                         hintText: "Password",
                         isPassword: true,
                         textInputType: TextInputType.visiblePassword),
-                    SizedBox(height: constraints.maxHeight * 0.03),
+                    SizedBox(height: constraints.maxHeight * 0.02),
                     TextFieldInput(
                         textEditingController:
                             confirmPasswordTextEditingController,
@@ -213,9 +206,8 @@ class _RegisterPageState extends State<RegisterPage>
                     SizedBox(height: constraints.maxHeight * 0.03),
                     TextButton(
                       style: TextButton.styleFrom(
-                        foregroundColor: Theme.of(context).colorScheme.primary,
-                        backgroundColor:
-                            Theme.of(context).colorScheme.onPrimary,
+                        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                        backgroundColor: const Color.fromARGB(255, 109, 198, 225),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -241,7 +233,11 @@ class _RegisterPageState extends State<RegisterPage>
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Next"),
+                              Text("Next",
+                                style: const TextStyle(
+                                fontSize: 16,
+                                ),
+                              ),
                             ],
                           )),
                     ),
@@ -258,7 +254,7 @@ class _RegisterPageState extends State<RegisterPage>
 
   Container registerName(BoxConstraints constraints) {
     return Container(
-      width: constraints.maxWidth * 0.9,
+      width: constraints.maxWidth * 0.8,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: theme.colorScheme.primary),
@@ -271,24 +267,24 @@ class _RegisterPageState extends State<RegisterPage>
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: SizedBox(
-                width: constraints.maxWidth * 0.8,
+                width: constraints.maxWidth * 0.7,
                 child: Column(
                   children: [
                     TextFieldInput(
                         textEditingController: firstNameTextEditingController,
                         hintText: "First Name",
                         textInputType: TextInputType.emailAddress),
-                    SizedBox(height: constraints.maxHeight * 0.03),
+                    SizedBox(height: constraints.maxHeight * 0.02),
                     TextFieldInput(
                         textEditingController: lastNameTextEditingController,
                         hintText: "Last Name",
                         textInputType: TextInputType.visiblePassword),
-                    SizedBox(height: constraints.maxHeight * 0.03),
+                    SizedBox(height: constraints.maxHeight * 0.02),
                     TextFieldInput(
                         textEditingController: displayNameEditingController,
                         hintText: "Display Name",
                         textInputType: TextInputType.visiblePassword),
-                    SizedBox(height: constraints.maxHeight * 0.03),
+                    SizedBox(height: constraints.maxHeight * 0.02),
                     _isLoading
                         ? LinearProgressIndicator(
                             value: progressController.value)
@@ -354,7 +350,7 @@ class _RegisterPageState extends State<RegisterPage>
                               ),
                             ],
                           ),
-                    SizedBox(height: constraints.maxHeight * 0.03),
+                    SizedBox(height: constraints.maxHeight * 0.02),
                   ],
                 ),
               ),
