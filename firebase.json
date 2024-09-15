@@ -1,1 +1,17 @@
-{"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"htn2024-bb550","configurations":{"web":"1:442193408982:web:c0b4210f5fb2127132aa77"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "htn2024-bb550",
+          "configurations": {
+            "web": "1:442193408982:web:c0b4210f5fb2127132aa77"
+          }
+        }
+      }
+    }
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}
