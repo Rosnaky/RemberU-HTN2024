@@ -18,11 +18,11 @@ class _HomeHomeSubpageState extends State<HomeHomeSubpage> {
           padding: const EdgeInsets.all(16.0),  // Padding inside the box
           margin: const EdgeInsets.all(8.0),   // Space outside the box
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 208, 221, 243),  // Background color of the box
+            color: const Color(0xffF5CBCE),  // Background color of the box
             borderRadius: BorderRadius.circular(12.0),  // Rounded corners
           ),
           child: const Text(
-            "Meet your friends",
+            "Friends List",
             style: TextStyle(fontSize: 18.0),  // You can style the text as needed
           ),
         ),

@@ -30,12 +30,13 @@ class _UserCardState extends State<UserCard> {
         child: Container (
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: const Color.fromARGB(48, 143, 221, 239),
+            color: const Color(0xffD3EAF2),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(15.0),
             child: SizedBox(
               child: Container (
+          margin: const EdgeInsets.all(8.0),   // Space outside the box
                 // color: const Color.fromARGB(48, 143, 221, 239),
                   width: 400,
                   child: Row(children: [
