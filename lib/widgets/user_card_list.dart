@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:app/provider/user_provider.dart';
 import 'package:app/widgets/user_card.dart';
 import 'package:flutter/material.dart';
@@ -26,11 +28,17 @@ class _UserCardListState extends State<UserCardList> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     return Container(
-      child: Column(
-        children: userProvider.user?.friends
-                .map((e) => UserCard(name: e.name, summary: e.summary, lastSeen: e.lastSeen.toString()))
-                .toList() ??
-            []));
+        child: Column(
+            children: userProvider.user?.friends
+                    .map((e) => UserCard(
+                        name: e.name,
+                        summary: e.summary,
+                        lastSeen: e.lastSeen.toString(),
+                        url: e.photoUrl.length == 0
+                            ? "https://static.vecteezy.com/system/resources/previews/036/280/651/non_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg"
+                            : e.photoUrl[Random().nextInt(e.photoUrl.length)]))
+                    .toList() ??
+                []));
   }
 
   // @override

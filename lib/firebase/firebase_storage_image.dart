@@ -21,7 +21,7 @@ class _ImageFromFirebaseStorageState extends State<ImageFromFirebaseStorage> {
       // Get the download URL from Firebase Storage
       String downloadURL = await FirebaseStorage.instance
           .ref(
-              'photos/f35ea51f9-fcca-4b86-885d-931b18eb92cf.jpg') // Path to your image in Firebase Storage
+              "photos/f35ea51f9-fcca-4b86-885d-931b18eb92cf.jpg") // Path to your image in Firebase Storage
           .getDownloadURL();
 
       setState(() {

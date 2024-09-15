@@ -1,6 +1,7 @@
 import 'package:app/firebase/auth.dart';
 import 'package:app/firebase/firebase_storage_image.dart';
 import 'package:app/models/firebase_user.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:app/provider/user_provider.dart';
@@ -12,17 +13,20 @@ class UserCard extends StatefulWidget {
       {super.key,
       required this.name,
       required this.summary,
-      required this.lastSeen});
+      required this.lastSeen,
+      required this.url});
 
   final String name;
   final String summary;
   final String lastSeen;
+  final String url;
 
   @override
   State<UserCard> createState() => _UserCardState();
 }
 
 class _UserCardState extends State<UserCard> {
+  String get url => widget.url;
   String get name => widget.name;
   String get summary => widget.summary;
   String get lastSeen => widget.lastSeen;
@@ -35,6 +39,12 @@ class _UserCardState extends State<UserCard> {
       final userProvider = Provider.of<UserProvider>(context, listen: false);
       userProvider.refreshUser();
     });
+  }
+
+  Future<String> getDownloadURL() async {
+    final ref = FirebaseStorage.instance.ref().child('photos').child(url);
+    var downloadurl = await ref.getDownloadURL();
+    return downloadurl;
   }
 
   @override
@@ -55,11 +65,15 @@ class _UserCardState extends State<UserCard> {
               // color: const Color.fromARGB(48, 143, 221, 239),
               width: 400,
               child: Row(children: [
-                SizedBox(
-                  width: 150,
-                  height: 150,
-                  child: ImageFromFirebaseStorage(),
-                ),
+                FutureBuilder<String>(
+                    future: getDownloadURL(),
+                    builder: (context, snapshot) {
+                      return SizedBox(
+                        width: 150,
+                        height: 150,
+                        child: Image.network(snapshot.data!),
+                      );
+                    }),
                 // width: 400,
                 // child: Row(children: [
                 //   SizedBox(
