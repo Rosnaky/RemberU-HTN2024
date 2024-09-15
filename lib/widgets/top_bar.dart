@@ -1,6 +1,7 @@
 import 'package:app/firebase/auth.dart';
 import 'package:app/pages/splash_page.dart';
 import 'package:app/provider/user_provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -60,6 +61,10 @@ class _TopBarState extends State<TopBar> {
               ),
               const Spacer(flex: 1),
               IconButton(
+                  onPressed: () => setActiveUser(userProvider.user?.uid),
+                  icon: const Icon(Icons.computer)),
+              const SizedBox(width: 25),
+              IconButton(
                   onPressed: () => logout(),
                   icon: const Icon(Icons.exit_to_app))
               // *** Settings
@@ -81,5 +86,15 @@ class _TopBarState extends State<TopBar> {
     Auth().logout();
     Navigator.pushNamedAndRemoveUntil(
         context, SplashPage.routeName, (route) => false);
+  }
+
+  Future<void> setActiveUser(String? uid) async {
+    if (uid == null) return;
+    await FirebaseFirestore.instance
+        .collection('rpi')
+        .doc('activeUser')
+        .update({
+      'uid': uid,
+    });
   }
 }
