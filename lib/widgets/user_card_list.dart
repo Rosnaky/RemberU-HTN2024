@@ -2,6 +2,7 @@ import 'package:app/provider/user_provider.dart';
 import 'package:app/widgets/user_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class UserCardList extends StatefulWidget {
   const UserCardList({super.key});
@@ -27,7 +28,7 @@ class _UserCardListState extends State<UserCardList> {
     return Container(
       child: Column(
         children: userProvider.user?.friends
-                .map((e) => UserCard(name: e.name, summary: e.summary))
+                .map((e) => UserCard(name: e.name, summary: e.summary, lastSeen: e.lastSeen.toString()))
                 .toList() ??
             []));
   }

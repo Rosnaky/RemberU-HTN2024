@@ -2,12 +2,16 @@ import 'package:app/firebase/auth.dart';
 import 'package:app/models/firebase_user.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:app/provider/user_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class UserCard extends StatefulWidget {
-  const UserCard({super.key, required this.name, required this.summary});
+  const UserCard({super.key, required this.name, required this.summary, required this.lastSeen});
 
   final String name;
   final String summary;
+  final String lastSeen;
 
   @override
   State<UserCard> createState() => _UserCardState();
@@ -16,15 +20,22 @@ class UserCard extends StatefulWidget {
 class _UserCardState extends State<UserCard> {
   String get name => widget.name;
   String get summary => widget.summary;
+  String get lastSeen => widget.lastSeen;
   late Future<FirebaseUser?> userFuture;
+
 
   @override
   void initState() {
     super.initState();
+    Future.microtask(() {
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      userProvider.refreshUser();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return Center(
       child: Card(
         child: Container (
@@ -74,6 +85,11 @@ class _UserCardState extends State<UserCard> {
                     summary, 
                     softWrap: true,
                   ),
+                  const SizedBox(height:10),
+                  Text(
+                    lastSeen,
+                    softWrap: true,
+                  )
                 ],
             )),
             // const Spacer(),
