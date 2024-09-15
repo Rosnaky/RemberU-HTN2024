@@ -58,8 +58,9 @@ class _UserCardState extends State<UserCard> {
           //     ),
             // ),
             // const Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(10),
+            Container(
+              width: 250,
+              padding: const EdgeInsets.all(15),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
