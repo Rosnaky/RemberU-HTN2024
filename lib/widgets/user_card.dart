@@ -27,19 +27,25 @@ class _UserCardState extends State<UserCard> {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        child: SizedBox(
-          child: Container (
+        child: Container (
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
             color: const Color.fromARGB(48, 143, 221, 239),
-                width: 400,
-                child: Row(children: [
-                  SizedBox(
-                    width: 150,
-                    height: 150,
-                    child: Container(
-                      color: const Color.fromARGB(
-                          255, 0, 0, 0), // Placeholder for an image or avatar
-              ),
-        ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SizedBox(
+              child: Container (
+                // color: const Color.fromARGB(48, 143, 221, 239),
+                  width: 400,
+                  child: Row(children: [
+                    SizedBox(
+                      width: 150,
+                      height: 150,
+                      child: Container(
+                        color: const Color(0xffE4F2F7), // Placeholder for an image or avatar
+                ),
+          ),
           // width: 400,
           // child: Row(children: [
           //   SizedBox(
@@ -64,6 +70,6 @@ class _UserCardState extends State<UserCard> {
           ])),
         ),
       ),
-    );
+    )));
   }
 }
