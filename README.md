@@ -1,16 +1,7 @@
-# app
+# Hack the North 2024
 
-A new Flutter project.
+The product allows one to recognize people seen before, presenting the user a summary of their interaction by using Symphonic Labs, a lip reading API, and processing it in an LLM.
 
-## Getting Started
+## Tools and Frameworks
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Flutter, Firebase (Auth, Firestore, and Storage), Flask, Raspberry Pi, Pytorch, Numpy, Dlib
