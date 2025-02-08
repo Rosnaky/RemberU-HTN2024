@@ -6,6 +6,6 @@ The product allows one to recognize people seen before, presenting the user a su
 
 Flutter, Firebase (Auth, Firestore, and Storage), Flask, Raspberry Pi, Pytorch, Numpy, Dlib
 
-  
+##### Make sure to checkout these related repos 
 - [RemberU-Pi Repo](https://github.com/Rosnaky/RemberU-Pi)
 - [RemberU-AI Repo](https://github.com/Rosnaky/RemberU-AI)
